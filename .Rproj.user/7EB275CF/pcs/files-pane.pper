@@ -1,0 +1,9 @@
+{
+    "path" : "~/Fast-Data-Exploration/covid",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
