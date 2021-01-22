@@ -77,6 +77,7 @@ population_es_2020 <- fromJSON(rawToChar(res$content)) %>%
   select(Nombre, Valor)
 
 saveRDS(population_es_2020, file = "data/population_es_2020.rds")
+write_csv(population_es_2020, "data/population_es_2020.csv")
 
 
 # Join data ---------------------------------------------------------------
@@ -89,24 +90,26 @@ cod_provincia_etrs89 <- provincias %>%
     by = c("CAPITAL" = "NOMBRE_ACTUAL")
   )
 saveRDS(cod_provincia_etrs89, file = "data/cod_provincia_etrs89.rds")
+write_csv(cod_provincia_etrs89, "data/cod_provincia_etrs89.csv")
 
 cod_provincia_etrs89_nombre_espanyol <- cod_provincia_etrs89 %>% 
   left_join(
     provincias_espanyol, by = c("PROVINCIA" = "Nombre oficial")
   )
-saveRDS(cod_provincia_etrs89_nombre_espanyol, 
-        file = "data/cod_provincia_etrs89_nombre_espanyol.rds")
+saveRDS(cod_provincia_etrs89_nombre_espanyol, file = "data/cod_provincia_etrs89_nombre_espanyol.rds")
+write_csv(cod_provincia_etrs89_nombre_espanyol, "data/cod_provincia_etrs89_nombre_espanyol.csv")
 
 # Full data
 cod_provincia_etrs89_nombre_espanyol_population20 <- 
   cod_provincia_etrs89_nombre_espanyol %>% 
   left_join(population_es_2020, by = c("PROVINCIA" = "Nombre"))
 
-saveRDS(cod_provincia_etrs89_nombre_espanyol_population20, 
-        file = "data/cod_provincia_etrs89_nombre_espanyol_population20.rds")
+saveRDS(cod_provincia_etrs89_nombre_espanyol_population20, file = "data/cod_provincia_etrs89_nombre_espanyol_population20.rds")
+write_csv(cod_provincia_etrs89_nombre_espanyol_population20, "data/cod_provincia_etrs89_nombre_espanyol_population20.csv")
 
 covid19_dataset_prepared <- 
   cod_provincia_etrs89_nombre_espanyol_population20 %>% 
   select(COD_PROV, Provincia, `Comunidad autónoma`, LONGITUD_ETRS89, LATITUD_ETRS89, Valor)
 saveRDS(covid19_dataset_prepared, file = "data/covid19_dataset_prepared.rds")
+write_csv(covid19_dataset_prepared, "data/covid19_dataset_prepared.csv")
 
