@@ -1,4 +1,4 @@
-COD_PROV,Provincia,Comunidad autónoma,LONGITUD_ETRS89,LATITUD_ETRS89,Valor
+cod,prov,ccaa,long,lat,population
 1,Álava,País Vasco,-2.67275685,42.85058789,333940
 2,Albacete,Castilla-La Mancha,-1.85574745,38.99588053,388270
 3,Alicante,Comunidad Valenciana,-0.4831832,38.34548705,1879888

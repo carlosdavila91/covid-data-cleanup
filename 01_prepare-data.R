@@ -109,7 +109,14 @@ write_csv(cod_provincia_etrs89_nombre_espanyol_population20, "data/cod_provincia
 
 covid19_dataset_prepared <- 
   cod_provincia_etrs89_nombre_espanyol_population20 %>% 
-  select(COD_PROV, Provincia, `Comunidad autónoma`, LONGITUD_ETRS89, LATITUD_ETRS89, Valor)
+  select(
+    cod = COD_PROV, 
+    prov = Provincia, 
+    ccaa = `Comunidad autónoma`, 
+    long = LONGITUD_ETRS89, 
+    lat = LATITUD_ETRS89, 
+    population = Valor
+  )
 saveRDS(covid19_dataset_prepared, file = "data/covid19_dataset_prepared.rds")
 write_csv(covid19_dataset_prepared, "data/covid19_dataset_prepared.csv")
 
